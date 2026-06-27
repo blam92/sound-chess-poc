@@ -26,7 +26,11 @@ export const PIECE_NAME = {
 
 // Unicode chess glyphs (no image assets). Solid forms for both colors — CSS colors them
 // (white fill + dark outline vs dark fill + light outline) for high contrast on the wood board.
-const SOLID = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
+// U+FE0E (VARIATION SELECTOR-15) forces monochrome *text* rendering: without it iOS/Safari draws
+// the pawn (U+265F) and friends as a fixed-color emoji that ignores CSS `color`, so the white
+// pieces come out black.
+const T = '\uFE0E';
+const SOLID = { k: '\u265A' + T, q: '\u265B' + T, r: '\u265C' + T, b: '\u265D' + T, n: '\u265E' + T, p: '\u265F' + T };
 export const GLYPH = { w: SOLID, b: SOLID };
 
 export const instrumentOf = (pieceType) => INSTRUMENT[pieceType];

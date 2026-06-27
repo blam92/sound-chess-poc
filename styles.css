@@ -56,6 +56,7 @@ h1, h2 { margin: 0; font-weight: 650; }
 .piece {
   font-size: clamp(28px, 8.5vw, 64px); line-height: 1; cursor: grab;
   user-select: none; transition: transform .05s linear; will-change: transform;
+  font-variant-emoji: text; /* keep iOS from drawing the pieces as color emoji (ignores `color`) */
 }
 .piece.white { color: #fff; text-shadow: 0 0 1px #000, 0 1px 2px #0006, 0 0 3px #0009; }
 .piece.black { color: #1b1b1b; text-shadow: 0 0 1px #000, 0 1px 1px #fff4; }
@@ -135,6 +136,7 @@ h1, h2 { margin: 0; font-weight: 650; }
 .promo-btn {
   font-size: 36px; width: 56px; height: 56px; border: 1px solid var(--line);
   border-radius: 8px; background: var(--panel-2); cursor: pointer; line-height: 1;
+  font-variant-emoji: text;
 }
 .promo-btn.white { color: #fff; text-shadow: 0 0 1px #000, 0 1px 2px #0008; }
 .promo-btn.black { color: #1b1b1b; text-shadow: 0 0 1px #fff; background: #c9ccd3; }
