@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Ajedrez Sonoro — PoC</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- vendored, offline; the only dependency -->
+  <script type="importmap">
+    { "imports": { "chess.js": "./vendor/chess.js" } }
+  </script>
+</head>
+<body>
+  <header id="topbar">
+    <h1>Ajedrez Sonoro <span class="tag">PoC</span></h1>
+    <p class="subtitle">una partida convencional de ajedrez que genera la obra — cada interacción suena</p>
+  </header>
+
+  <main id="app">
+    <section id="stage">
+      <div id="board-frame">
+        <div id="board" role="grid" aria-label="Tablero de ajedrez sonoro"></div>
+        <div id="check-banner" class="banner" role="status" aria-live="assertive" hidden></div>
+        <div id="promo-picker" role="dialog" aria-label="Coronación" hidden></div>
+      </div>
+      <div id="legend">
+        <span class="lg src-king">rey sostenido</span>
+        <span class="lg src-held">en el aire</span>
+        <span class="lg src-threat">sensible (crescendo)</span>
+        <span class="lg src-capture">capturada (sostenida)</span>
+        <span class="lg src-dominant">acorde dominante</span>
+      </div>
+    </section>
+
+    <aside id="panels">
+      <section class="panel"><h2>Controles</h2><div id="controls"></div></section>
+      <section class="panel"><h2>Voces sonando</h2><div id="voices" aria-live="polite"></div></section>
+      <section class="panel density"><h2>Densidad inversa</h2><div id="density"></div></section>
+      <section class="panel"><h2>Registro de eventos</h2><div id="event-log" aria-live="polite"></div></section>
+      <section class="panel"><h2>Monitor MIDI / OSC <span class="hint">(contrato Ableton + Max)</span></h2><div id="io-monitor"></div></section>
+    </aside>
+  </main>
+
+  <div id="start-overlay">
+    <div class="start-card">
+      <h2>Ajedrez Sonoro</h2>
+      <p>Al iniciar suenan únicamente los dos reyes (flautas), sostenidos en la nota de su casilla
+         (<span class="mono">Mi 1</span> y <span class="mono">Mi 8</span>). A medida que se capturan piezas, la
+         instrumentación <em>crece</em>: lógica inversa a lo que se ve.</p>
+      <p class="fine">Levantá una pieza (clic o arrastre) para escucharla "en el aire"; soltala para jugar.
+         El sonido es un sintetizador de marcador de posición — los timbres reales (cuarteto de cuerdas + flautas)
+         se integran luego con Ableton + Max vía MIDI/OSC.</p>
+      <button id="start-btn">▶ Empezar</button>
+      <p class="fine">Requiere un gesto para habilitar el audio del navegador.</p>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

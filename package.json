@@ -1,0 +1,17 @@
+{
+  "name": "ajedrez-sonoro",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "description": "PoC: a live, playable chess board that generates music — each interaction triggers sound (Ajedrez Sonoro).",
+  "scripts": {
+    "start": "node serve.mjs",
+    "serve": "node serve.mjs",
+    "test": "node src/music-math.test.mjs && node src/logic.test.mjs",
+    "bridge": "node osc-bridge.js"
+  },
+  "optionalDependencies": {
+    "ws": "^8.18.0",
+    "osc": "^2.4.5"
+  }
+}
